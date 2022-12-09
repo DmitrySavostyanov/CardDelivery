@@ -42,7 +42,7 @@ public class CardDeliveryTest {
         $("[data-test-id=city] input").setValue("Стрежевой").pressEnter();
         $("[data-test-id=date] input").doubleClick().sendKeys(dayMeeting(3));
         $("[data-test-id=name] input").setValue("Савостьянов Дмитрий");
-        $("[data-test-id=phone] input").setValue("+79130000000");
+        $("[data-test-id=phone] input").setValue("+79131041698");
         $("[data-test-id=agreement]").click();
         $(withText("Забронировать")).click();
         $("[data-test-id=city].input_invalid .input__sub").shouldHave(exactText("Доставка в выбранный город недоступна"));
