@@ -75,7 +75,7 @@ public class CardDeliveryTest {
         $("[data-test-id=city] input").setValue("Томск").pressEnter();
         $("[data-test-id=date] input").doubleClick().sendKeys(dayMeeting(3));
         $("[data-test-id=name] input").setValue("Савостьянов Дмитрий");
-        $("[data-test-id=phone] input").setValue("89130000000");
+        $("[data-test-id=phone] input").setValue("89131040000");
         $("[data-test-id=agreement]").click();
         $(withText("Забронировать")).click();
         $("[data-test-id=phone].input_invalid .input__sub").shouldHave(exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
