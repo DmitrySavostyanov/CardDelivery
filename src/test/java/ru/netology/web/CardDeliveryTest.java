@@ -56,7 +56,7 @@ public class CardDeliveryTest {
         $("[data-test-id=phone] input").setValue("+79131041698");
         $("[data-test-id=agreement]").click();
         $(withText("Забронировать")).click();
-        $(".input_invalid .input__sub").shouldHave(exactText("Заказ на выбранную дату невозможен"));
+        $x("//*[@data-test-id=\"notification\"]").shouldNot(visible, Duration.ofSeconds(15));
     }
 
     @Test
