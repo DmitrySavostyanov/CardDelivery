@@ -51,7 +51,7 @@ public class CardDeliveryTest {
     @Test
     void shouldTestFieldData() {
         $("[data-test-id=city] input").setValue("Томск").pressEnter();
-        $("[data-test-id=date] input").doubleClick().sendKeys(dayMeeting(0));
+        $("[data-test-id=date] input").doubleClick().sendKeys(dayMeeting(1));
         $("[data-test-id=name] input").setValue("Савостьянов Дмитрий");
         $("[data-test-id=phone] input").setValue("+79131041698");
         $("[data-test-id=agreement]").click();
