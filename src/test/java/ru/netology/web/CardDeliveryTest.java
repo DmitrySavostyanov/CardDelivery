@@ -1,7 +1,9 @@
 package ru.netology.web;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -12,8 +14,6 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CardDeliveryTest {
-    private int daysToMeeting;
-
     public String dayMeeting(int daysToMeeting) {
         LocalDate dateOrder = LocalDate.now().plusDays(daysToMeeting);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
@@ -26,6 +26,11 @@ public class CardDeliveryTest {
         open("http://localhost:7080");
     }
 
+    @AfterEach
+    void memoryClear() {
+        clearBrowserCookies();
+        clearBrowserLocalStorage();
+    }
     @Test
     void shouldFormCardDeliveryTest() {
         $("[data-test-id=city] input").setValue("Томск").pressEnter();
@@ -46,17 +51,6 @@ public class CardDeliveryTest {
         $("[data-test-id=agreement]").click();
         $(withText("Забронировать")).click();
         $("[data-test-id=city].input_invalid .input__sub").shouldHave(exactText("Доставка в выбранный город недоступна"));
-    }
-
-    @Test
-    void shouldTestFieldData() {
-        $("[data-test-id=city] input").setValue("Томск").pressEnter();
-        $("[data-test-id=date] input").doubleClick().sendKeys(dayMeeting(1));
-        $("[data-test-id=name] input").setValue("Савостьянов Дмитрий");
-        $("[data-test-id=phone] input").setValue("+79131041698");
-        $("[data-test-id=agreement]").click();
-        $(withText("Забронировать")).click();
-        $x("//*[@data-test-id=\"notification\"]").shouldNot(visible, Duration.ofSeconds(15));
     }
 
     @Test
